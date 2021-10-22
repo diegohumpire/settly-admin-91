@@ -1,0 +1,51 @@
+form.Form {
+    display: flex;
+    flex-direction: column;
+    margin: 0 2rem;
+
+    input {
+        font-size: 0.75rem;
+        margin: 1rem 0;
+        padding: 0.25rem 0;
+        box-sizing: border-box;
+        border: none;
+        border-bottom: 1px solid #c0c0c0;
+        background: none;
+        outline: none;
+
+        &:focus {
+            &::placeholder {
+                color: #c0c0c0;
+            }
+        }
+    }
+
+
+    button {
+        cursor: pointer;
+        background-color: #5887C5;
+        text-transform: uppercase;
+        color: #fff;
+        border: none;
+        width: 100%;
+        padding: 1rem;
+        border-radius: 7px;
+        font-size: 0.75rem;
+
+        &:hover {
+            background-color: #2761ad;
+            border-color: #5887C5;
+        }
+    }
+    
+
+    .tiny {
+        padding-top: 0.5rem;
+        font-size: 0.65rem;
+
+        a, a:focus, a:hover {
+            color: #2761ad;
+            text-decoration: none;
+        }
+    }
+}

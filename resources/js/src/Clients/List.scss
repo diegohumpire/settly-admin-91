@@ -1,0 +1,75 @@
+.ClientList {
+    .Actions {
+        padding-bottom: 0.5rem;
+        text-align: right;
+        .Action {
+            cursor: pointer;
+            background-color: #5887C5;
+            text-transform: uppercase;
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1rem;
+            border-radius: 7px;
+            font-size: 0.75rem;
+
+            &:hover {
+                background-color: #2761ad;
+                border-color: #5887C5;
+            }
+        }
+    }
+    
+    .ListTable {
+        border: none;
+        border-spacing: 0;
+
+        thead tr {
+            text-align: center;
+            letter-spacing: 0.03em;
+            background-color: #686868;
+            color: #fff;
+
+            th {
+                padding: 0.5rem 1rem;
+            }
+        }
+
+        .ClientRow {
+            text-align: center;
+            td {
+                padding: 1rem;
+                &.ProfilePicture {
+                    text-align: center;
+                }
+            }
+            td.Actions {
+                .Action {
+                    cursor: pointer;
+                    background-color: #5887C5;
+                    text-transform: uppercase;
+                    color: #fff;
+                    border: none;
+                    padding: 0.75rem 1rem;
+                    border-radius: 7px;
+                    font-size: 0.75rem;
+                    margin: 0.25rem;
+        
+                    &:hover {
+                        background-color: #2761ad;
+                        border-color: #5887C5;
+                    }
+
+                    &.Danger {
+                        background-color: #b13636;
+
+                        &:hover {
+                            background-color: rgb(138, 4, 4);
+                            border-color: #ffc5c5;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
