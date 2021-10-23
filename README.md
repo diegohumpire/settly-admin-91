@@ -16,6 +16,10 @@
 - Execute `php artisan passport:keys`
 - Execute `php artisan passport:client --personal` and name it (doesn't matter the name). Then update .env file with values
 
+## TODO
+- Buttons component
+- Improve Auth flow
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:

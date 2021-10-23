@@ -14,29 +14,35 @@ export default function CreateAccount() {
         password: '',
         password_confirmation: ''
     });
+    const [errorMessage, setErrorMessage] = useState();
     const history = useHistory();
 
     const createAccount = async () => {
-        const request = await axios.post(`/api/user`, newAccount, {
+        return await axios.post(`/api/user`, newAccount, {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'appplication/json'
             }
-        }).catch(error => error);
-        const data = request.data.data;
-
-        console.log(data);
+        })
+        .then(data => data)
+        .catch(error => error);
     }
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault();
+        
+        const request = await createAccount();
 
-        try {
-            createAccount();
-            history.push('/');
-        } catch(err) {
-            console.error(err);
+        if (request.response?.status && [501, 422, 400].includes(request.response?.status)) {
+            setErrorMessage("Invalid data");
+        } else {
+            console.log(request.data);
+            history.push({
+                pathname: '/login',
+                hash: '#success_new_account'
+            });
         }
+
     }
 
     const onChangeHandler = (e) => {
@@ -50,6 +56,7 @@ export default function CreateAccount() {
     return (
         <Wrapper title="Create your account">
             <div className="CreateAccount">
+                {errorMessage ? <h5 style={{ color: 'red', textAlign: 'center' }}>{ errorMessage }</h5> : ''}
                 <BaseForm onSubmit={ submitHandler }>
                     <input type="text" name="name" onChange={onChangeHandler} placeholder="First name"/>
                     <input type="text" name="surname" onChange={onChangeHandler} placeholder="Surname"/>

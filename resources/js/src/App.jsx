@@ -2,87 +2,73 @@ import React, { useState } from "react";
 import CreateAccount from "./Auth/CreateAccount";
 import Login from "./Auth/Login";
 import { 
-    List as ClientList,
-} from "./Clients/List";
+        List as ClientList,
+    } from "./Clients/List";
+import Dashboard from "./Dashboard";
 import { ClientForm } from "./Clients/Form";
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-} from "react-router-dom";
+        BrowserRouter as Router,
+        Switch,
+        Route,
+        Link,
+        useLocation,
+        useHistory,
+        Redirect
+    } from "react-router-dom";
 import useToken from './useToken';
 
 
 // Styles
 import "./App.scss";
 
-// TODO
-// function setToken(userToken) {
-//     localStorage.setItem('token', JSON.stringify(userToken));
-// }
-
-// TODO
-// function getToken() {
-//     const tokenString = localStorage.getItem('token');
-//     const userToken = JSON.parse(tokenString);
-
-//     return userToken?.access_token
-// }
-
-// TODO
-function logout() {
-    localStorage.removeItem('token'); 
-    // setToken();
+function PrivateRoute({ children, ...rest }) {
+    let { token } = useToken();
+    console.log(token);
+    return (
+        <Route
+            {...rest}
+            render={({ location }) =>
+                token ? (
+                    children
+                ) : (
+                    <Redirect
+                        to={{
+                        pathname: "/login",
+                        state: { from: location }
+                        }}
+                    />
+                )
+            }
+        />
+    );
 }
 
-function App() {
+export default function App() {
     
     // TODO
-    // const [ token, setToken] = useState();
     const { token, setToken } = useToken();
-    // const token = getToken();
-
-    console.log(token);
-
-    if (!token) {
-        return (
-            <div className="App">            
-                <Router>
-                    <Switch>
-                        <Route exact path="/">
-                            <Login setToken={setToken} />
-                        </Route>
-                        <Route exact path="/create-account">
-                            <CreateAccount />
-                        </Route>
-                    </Switch>
-                </Router>
-            </div>
-        )
-    }
 
     return (
         <div className="App">            
             <Router>
-                <div className="GlobalActions">
-                    <button onClick={ logout }>Logout</button>
-                </div>
-
                 <Switch>
-                    <Route exact path="/">
-                        <ClientList />
+                    <Route exact path="/login">
+                        <Login setToken={setToken} />
                     </Route>
-                    <Route exact path="/client-list">
-                        <ClientList />
+                    <Route exact path="/create-account">
+                        <CreateAccount />
                     </Route>
-                    <Route exact path="/client-form">
+                    <PrivateRoute exact path="/">
+                        <Dashboard />
+                    </PrivateRoute>
+                    <PrivateRoute exact path="/client-list">
+                        <Dashboard />
+                    </PrivateRoute>
+                    <PrivateRoute exact path="/client-form">
                         <ClientForm />
-                    </Route>
+                    </PrivateRoute>
                 </Switch>
             </Router>
         </div>
     )
 }
-
-export default App;

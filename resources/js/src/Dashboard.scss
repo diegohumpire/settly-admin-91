@@ -1,5 +1,11 @@
-.ClientList {
+.Dashboard {
     .Actions {
+        display: flex;
+        justify-content: end;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 0.5rem;
+
         .Action {
             cursor: pointer;
             background-color: #5887C5;
@@ -10,47 +16,29 @@
             border-radius: 7px;
             font-size: 0.75rem;
             margin: 0.25rem;
-
+    
             &:hover {
                 background-color: #2761ad;
                 border-color: #5887C5;
             }
-
+    
             &.Danger {
                 background-color: #b13636;
-
+    
                 &:hover {
                     background-color: rgb(138, 4, 4);
                     border-color: #ffc5c5;
                 }
             }
-        }
-    }
+
+            &.Secondary {
+                background-color: #5a5a5a;
     
-    .ListTable {
-        border: none;
-        border-spacing: 0;
-
-        thead tr {
-            text-align: center;
-            letter-spacing: 0.03em;
-            background-color: #686868;
-            color: #fff;
-
-            th {
-                padding: 0.5rem 1rem;
-            }
-        }
-
-        .ClientRow {
-            text-align: center;
-            td {
-                padding: 1rem;
-                &.ProfilePicture {
-                    text-align: center;
+                &:hover {
+                    background-color: #8f8f8f;
+                    border-color: #ffc5c5;
                 }
             }
         }
     }
 }
-

@@ -22,7 +22,9 @@ class AccessController extends Controller
             $token = $user->createToken($request->email);
 
             return response()->json([
-                'access_token' => $token->plainTextToken
+                'access_token' => $token->plainTextToken,
+                'name' => $user->name,
+                'email' => $user->email
             ]);
         }
 

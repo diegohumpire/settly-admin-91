@@ -1,13 +1,10 @@
-import { Component, useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Wrapper from "../Wrapper";
 import { useLocation } from "react-router-dom";
 import { BaseForm } from "../BaseForm";
 import useToken from "../useToken";
 import axios from "axios";
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
     Link,
 } from "react-router-dom";
 
@@ -44,6 +41,7 @@ function ClientForm() {
     });
     const [isLoading, setIsLoading] = useState(false);
 
+    // Mode editor
     if (query.get('id')) {
         useEffect(() => {
             const fetchData = async () => {

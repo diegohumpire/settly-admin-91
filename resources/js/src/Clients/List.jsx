@@ -1,8 +1,5 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Wrapper from "../Wrapper";
-import { image as image_default } from "../image_default";
-import { width } from "tailwindcss/defaultTheme";
 import axios from "axios";
 import useToken from "../useToken";
 
@@ -26,9 +23,9 @@ const ClientRow = ({ client, deleteAction }) => {
             </td>
             <td className="Actions">
                 <Link to={`/client-form?id=${client.id}`}>
-                    <button className="Action">Editar</button>
+                    <button className="Action">EDIT</button>
                 </Link>
-                <button className="Action Danger" onClick={ deleteAction } id={client.id}>Eliminar</button>
+                <button className="Action Danger" onClick={ deleteAction } id={client.id}>Delete</button>
             </td>
         </tr>
     )
@@ -39,6 +36,8 @@ function List() {
     const [clients, setClients] = useState([]);
     const { token, setToken } = useToken();
     const [isLoading, setIsLoading] = useState(false);
+
+    console.log(history);
 
     const fetchData = async () => {
         setIsLoading(true)
@@ -79,36 +78,29 @@ function List() {
     }
 
     return (
-        <Wrapper title="Clients">
-            <div className="ClientList">
-                <div className="Actions">
-                    <Link to="/client-form">
-                        <button className="Action">New</button>
-                    </Link>
-                </div>
-                <table className="ListTable">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Profile Picture</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            !isLoading ? 
-                                clients.map((client) => (
-                                    <ClientRow client={client} deleteAction={deleteActionHandler} key={client.id} />
-                                )) :
-                                <tr>
-                                    <td>Loading...</td>
-                                </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-        </Wrapper>
+        <div className="ClientList">
+            <table className="ListTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Profile Picture</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        !isLoading ? 
+                            clients.map((client) => (
+                                <ClientRow client={client} deleteAction={deleteActionHandler} key={client.id} />
+                            )) :
+                            <tr>
+                                <td>Loading...</td>
+                            </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     );
 }
 
