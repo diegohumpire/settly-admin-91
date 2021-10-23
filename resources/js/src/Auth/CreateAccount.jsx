@@ -33,7 +33,7 @@ export default function CreateAccount() {
         
         const request = await createAccount();
 
-        if (request.response?.status && [501, 422, 400].includes(request.response?.status)) {
+        if (request.response?.status && [501, 422, 400, 401, 403].includes(request.response?.status)) {
             setErrorMessage("Invalid data");
         } else {
             console.log(request.data);

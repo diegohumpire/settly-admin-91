@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\ClientResource;
 use App\Models\Client;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 class ClientController extends Controller
@@ -50,7 +51,7 @@ class ClientController extends Controller
         if ($client->user_id != Auth::user()->id) {
             return response()->json([
                 'message' => 'Invalid request'
-            ], 503);
+            ], Response::HTTP_FORBIDDEN);
         }
 
         return new ClientResource($client);
@@ -68,7 +69,7 @@ class ClientController extends Controller
         if ($client->user_id != Auth::user()->id) {
             return response()->json([
                 'message' => 'Invalid request'
-            ], 503);
+            ], Response::HTTP_FORBIDDEN);
         }
 
         $client->update($request->all());
@@ -87,6 +88,6 @@ class ClientController extends Controller
     {
         $client->delete();
 
-        return response()->json([], 204);
+        return response()->json([], Response::HTTP_NO_CONTENT);
     }
 }

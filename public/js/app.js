@@ -2351,7 +2351,7 @@ function CreateAccount() {
             case 3:
               request = _context2.sent;
 
-              if ((_request$response = request.response) !== null && _request$response !== void 0 && _request$response.status && [501, 422, 400].includes((_request$response2 = request.response) === null || _request$response2 === void 0 ? void 0 : _request$response2.status)) {
+              if ((_request$response = request.response) !== null && _request$response !== void 0 && _request$response.status && [501, 422, 400, 401, 403].includes((_request$response2 = request.response) === null || _request$response2 === void 0 ? void 0 : _request$response2.status)) {
                 setErrorMessage("Invalid data");
               } else {
                 console.log(request.data);
@@ -2583,7 +2583,7 @@ function Login(_ref2) {
               console.log(request);
               console.log('Done...');
 
-              if ((_request$response = request.response) !== null && _request$response !== void 0 && _request$response.status && [501, 422, 400].includes((_request$response2 = request.response) === null || _request$response2 === void 0 ? void 0 : _request$response2.status)) {
+              if ((_request$response = request.response) !== null && _request$response !== void 0 && _request$response.status && [501, 422, 400, 401, 403].includes((_request$response2 = request.response) === null || _request$response2 === void 0 ? void 0 : _request$response2.status)) {
                 setErrorMessage("Invalid Credentials");
               } else {
                 console.log(request.data);
@@ -3645,7 +3645,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".Dashboard .Actions {\n  display: flex;\n  justify-content: end;\n  flex-direction: row;\n  align-items: center;\n  margin-bottom: 0.5rem;\n}\n\n.Dashboard .Actions .Action {\n  cursor: pointer;\n  background-color: #5887C5;\n  text-transform: uppercase;\n  color: #fff;\n  border: none;\n  padding: 0.75rem 1rem;\n  border-radius: 7px;\n  font-size: 0.75rem;\n  margin: 0.25rem;\n}\n\n.Dashboard .Actions .Action:hover {\n  background-color: #2761ad;\n  border-color: #5887C5;\n}\n\n.Dashboard .Actions .Action.Danger {\n  background-color: #b13636;\n}\n\n.Dashboard .Actions .Action.Danger:hover {\n  background-color: #8a0404;\n  border-color: #ffc5c5;\n}\n\n.Dashboard .Actions .Action.Secondary {\n  background-color: #5a5a5a;\n}\n\n.Dashboard .Actions .Action.Secondary:hover {\n  background-color: #8f8f8f;\n  border-color: #ffc5c5;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".Dashboard .Actions {\n  display: flex;\n  justify-content: flex-end;\n  flex-direction: row;\n  align-items: center;\n  margin-bottom: 0.5rem;\n}\n\n.Dashboard .Actions .Action {\n  cursor: pointer;\n  background-color: #5887C5;\n  text-transform: uppercase;\n  color: #fff;\n  border: none;\n  padding: 0.75rem 1rem;\n  border-radius: 7px;\n  font-size: 0.75rem;\n  margin: 0.25rem;\n}\n\n.Dashboard .Actions .Action:hover {\n  background-color: #2761ad;\n  border-color: #5887C5;\n}\n\n.Dashboard .Actions .Action.Danger {\n  background-color: #b13636;\n}\n\n.Dashboard .Actions .Action.Danger:hover {\n  background-color: #8a0404;\n  border-color: #ffc5c5;\n}\n\n.Dashboard .Actions .Action.Secondary {\n  background-color: #5a5a5a;\n}\n\n.Dashboard .Actions .Action.Secondary:hover {\n  background-color: #8f8f8f;\n  border-color: #ffc5c5;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
