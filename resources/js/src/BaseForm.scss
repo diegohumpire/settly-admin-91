@@ -36,6 +36,16 @@ form.Form {
             background-color: #2761ad;
             border-color: #5887C5;
         }
+
+        &.Secondary {
+            background-color: #cfcece;
+            color: #000;
+
+            &:hover {
+                background-color: #7e7e7e;
+                color: #fff;
+            }
+        }
     }
     
 

@@ -7,6 +7,15 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Requirements
+- SQLite 3
+
+## Installation
+- Execute `touch database/database.sqlite` then update `.env` file with full path direction ex: `/home/user/full/path/laravel/project/database/database.sqlite`
+- Execute `php artisan migrate`
+- Execute `php artisan passport:keys`
+- Execute `php artisan passport:client --personal` and name it (doesn't matter the name). Then update .env file with values
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
