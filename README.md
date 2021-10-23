@@ -11,10 +11,19 @@
 - SQLite 3
 
 ## Installation
-- Execute `touch database/database.sqlite` then update `.env` file with full path direction ex: `/home/user/full/path/laravel/project/database/database.sqlite`
+- `composer install`
+- `cp .env.example .env`
+- Execute `touch database/database.sqlite` 
+- Then update `DB_DATABASE` variable in `.env` file with full path direction for example: `/home/user/full/path/laravel/project/database/database.sqlite`
+    - You can use this command: `full=$(pwd); echo "${full}/database/database.sqlite"` for help.
+    - `DB_DATABASE=/home/user/full/path/laravel/project/database/database.sqlite`
 - Execute `php artisan migrate`
 - Execute `php artisan passport:keys`
-- Execute `php artisan passport:client --personal` and name it (doesn't matter the name). Then update .env file with values
+- Execute `php artisan passport:client --personal` and name it (doesn't matter the name)
+- Then update `.env` -> `PASSPORT_PERSONAL_ACCESS_CLIENT_ID` and `PASSPORT_PERSONAL_ACCESS_CLIENT_SECRET` with previous values
+- Excute `php artisan key:generate`
+- Then `php artisan serv` if you want
+- Done
 
 ## TODO
 - Buttons component
