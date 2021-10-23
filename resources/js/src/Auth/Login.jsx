@@ -46,9 +46,9 @@ export default function Login({ setToken }) {
         if (request.response?.status && [501, 422, 400, 401, 403].includes(request.response?.status)) {
             setErrorMessage("Invalid Credentials");
         } else {
-            console.log(request.data);
-            setToken(request.data);
-            setUserInformation(request.data);
+            console.log(request.data.data);
+            setToken(request.data.data);
+            setUserInformation(request.data.data);
             history.push('/');
         }
     }

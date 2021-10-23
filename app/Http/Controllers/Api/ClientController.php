@@ -5,12 +5,20 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ClientResource;
 use App\Models\Client;
+use App\Services\ClientService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 class ClientController extends Controller
 {
+    private ClientService $clientService;
+
+    public function __construct(ClientService $clientService)
+    {
+        $this->clientService = $clientService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +28,7 @@ class ClientController extends Controller
     {
         /** @var App\Models\User */
         $user = Auth::user();
-        $clients = $user->clients()->orderBy('id', 'DESC')->get();
+        $clients = $this->clientService->findByUserId($user->id);
 
         return ClientResource::collection($clients);
     }

@@ -2586,9 +2586,9 @@ function Login(_ref2) {
               if ((_request$response = request.response) !== null && _request$response !== void 0 && _request$response.status && [501, 422, 400, 401, 403].includes((_request$response2 = request.response) === null || _request$response2 === void 0 ? void 0 : _request$response2.status)) {
                 setErrorMessage("Invalid Credentials");
               } else {
-                console.log(request.data);
-                setToken(request.data);
-                setUserInformation(request.data);
+                console.log(request.data.data);
+                setToken(request.data.data);
+                setUserInformation(request.data.data);
                 history.push('/');
               }
 
